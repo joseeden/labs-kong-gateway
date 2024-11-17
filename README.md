@@ -1,19 +1,13 @@
-<h1 align="center"><a href="https://www.udemy.com/course/kong-api-gateway-from-zero-to-hero/"> Kong: API Gateway from Zero to Hero</a></h1>
 
-<p align="center">
-  <img src="data/kong.png" />
-</p> 
-
-
-# Kong Docker Setup
+# test-kong-gateway
 
 ## 1. Getting Started With The Fast API Application
 
 ```sh
-$ git clone https://github.com/raj713335/kong-gateway.git
-$ cd kong-gateway
-$ pip install -r requirements.txt
-$ python main.py
+git clone https://github.com/joseeden/test-kong-gateway.git
+cd kong-gateway
+pip install -r requirements.txt
+python main.py
 ```
 
 ## Run & Go
@@ -167,8 +161,8 @@ docker network rm kong-net
 # Konga Setup
 
 ```
-$ docker pull pantsel/konga
-$ docker run -p 1337:1337 \
+docker pull pantsel/konga
+docker run -p 1337:1337 \
              --network {{kong-network}} \ // optional
              --name konga \
              -e "NODE_ENV=production" \ // or "development" | defaults to 'development'
