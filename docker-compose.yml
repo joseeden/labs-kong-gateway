@@ -72,7 +72,7 @@ services:
       - "127.0.0.1:8444:8444/tcp"
       - "127.0.0.1:8002:8002/tcp"
     healthcheck:
-      test: [ "CMD", "kong", "health" ]
+      test: ["CMD", "kong", "health"]
       interval: 10s
       timeout: 10s
       retries: 10
@@ -87,7 +87,7 @@ services:
     image: pantsel/konga
     container_name: konga_web
     ports:
-      - 1337:1337
+      - "1337:1337"
     networks:
       - kong-net
     environment:
@@ -103,15 +103,7 @@ services:
       POSTGRES_USER: ${KONG_PG_USER:-kong}
       POSTGRES_PASSWORD: ${KONG_PG_PASSWORD:-mykongpassword}
     healthcheck:
-      test:
-        [
-          "CMD",
-          "pg_isready",
-          "-d",
-          "${KONG_PG_DATABASE:-kong}",
-          "-U",
-          "${KONG_PG_USER:-kong}"
-        ]
+      test: ["CMD", "pg_isready", "-d", "${KONG_PG_DATABASE:-kong}", "-U", "${KONG_PG_USER:-kong}"]
       interval: 30s
       timeout: 10s
       retries: 3
@@ -122,12 +114,27 @@ services:
       - kong-net
     volumes:
       - kong_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin
+    ports:
+      - "5050:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: postgres@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    networks:
+      - kong-net
+    depends_on:
+      - kong-database
 
   zipkin:
     image: openzipkin/zipkin:latest
     container_name: zipkin
     ports:
-      - 9411:9411
+      - "9411:9411"
     networks:
       - kong-net
 
@@ -187,5 +194,3 @@ services:
       - "3000:3000"
     networks:
       - kong-net
-
-
