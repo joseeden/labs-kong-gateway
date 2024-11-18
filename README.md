@@ -7,7 +7,7 @@ The  FastAPI application can be found here: [test-fastapi-simple-app](https://gi
 
 ```
 git clone https://github.com/joseeden/test-fastapi-simple-app.git
-cd kong-gateway
+cd test-fastapi-simple-app
 pip install -r requirements.txt
 python main.py
 ```
