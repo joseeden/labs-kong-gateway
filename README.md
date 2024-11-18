@@ -3,20 +3,15 @@
 
 ## 1. Getting Started With The Fast API Application
 
-```sh
-git clone https://github.com/joseeden/test-kong-gateway.git
+The  FastAPI application can be found here: [test-fastapi-simple-app](https://github.com/joseeden/test-fastapi-simple-app)
+
+```
+git clone https://github.com/joseeden/test-fastapi-simple-app.git
 cd kong-gateway
 pip install -r requirements.txt
 python main.py
 ```
 
-## Run & Go
-For easy installation and setup run a single command below.
-```docker-compose
- docker-compose up -d --build
-```
-
-----------
 
 ## Prepare the database
 
