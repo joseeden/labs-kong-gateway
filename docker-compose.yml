@@ -1,4 +1,4 @@
-version: '3.9'
+version: '3.7'
 
 x-kong-config:
   &kong-env
@@ -72,7 +72,7 @@ services:
       - "127.0.0.1:8444:8444/tcp"
       - "127.0.0.1:8002:8002/tcp"
     healthcheck:
-      test: ["CMD", "kong", "health"]
+      test: [ "CMD", "kong", "health" ]
       interval: 10s
       timeout: 10s
       retries: 10
@@ -87,7 +87,7 @@ services:
     image: pantsel/konga
     container_name: konga_web
     ports:
-      - "1337:1337"
+      - 1337:1337
     networks:
       - kong-net
     environment:
@@ -103,7 +103,15 @@ services:
       POSTGRES_USER: ${KONG_PG_USER:-kong}
       POSTGRES_PASSWORD: ${KONG_PG_PASSWORD:-mykongpassword}
     healthcheck:
-      test: ["CMD", "pg_isready", "-d", "${KONG_PG_DATABASE:-kong}", "-U", "${KONG_PG_USER:-kong}"]
+      test:
+        [
+          "CMD",
+          "pg_isready",
+          "-d",
+          "${KONG_PG_DATABASE:-kong}",
+          "-U",
+          "${KONG_PG_USER:-kong}"
+        ]
       interval: 30s
       timeout: 10s
       retries: 3
@@ -134,7 +142,7 @@ services:
     image: openzipkin/zipkin:latest
     container_name: zipkin
     ports:
-      - "9411:9411"
+      - 9411:9411
     networks:
       - kong-net
 
