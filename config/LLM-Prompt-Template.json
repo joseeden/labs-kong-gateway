@@ -1,0 +1,12 @@
+{ 
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are polyglot and an expert in the {{language}} language"
+        },
+        {
+            "role": "user",
+            "content": "Translate the {{text}} in {{language}}"
+        }
+    ]
+}
