@@ -207,3 +207,12 @@ services:
       - "3000:3000"
     networks:
       - kong-net
+
+  echo-server:
+    image: ealen/echo-server
+    container_name: echo-server
+    ports:
+      - "8081:8080"  
+    networks:
+      - kong-net  
+    restart: on-failure
