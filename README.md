@@ -1,5 +1,5 @@
 
-# test-kong-gateway
+# labs-kong-gateway
 
 ## 1. Getting Started With The Fast API Application
 
